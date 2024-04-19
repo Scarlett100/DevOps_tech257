@@ -1,0 +1,56 @@
+---
+# where do you want to install or run this playbook?
+- hosts: web
+
+  # would you like to see the logs?
+  gather_facts: yes
+
+  # provide admin access to this playbook - use sudo
+  become: true
+
+  # instructions - tasks install nodejs in agent node
+  tasks:
+    - name: Update apt package cache
+      apt:
+        update_cache: yes
+
+    - name: Ensure any held broken packages are resolved
+      command: sudo dpkg --configure -a
+      ignore_errors: yes
+      changed_when: false
+
+    - name: Fix held broken packages
+      command: sudo apt-get install -f -y
+      ignore_errors: yes
+      changed_when: false
+
+    - name: Install Node.js using curl and bash
+      shell: curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash - && sudo apt-get install -y nodejs
+      args:
+        executable: /bin/bash
+
+    - name: clone repo
+      git:
+        repo: https://github.com/Scarlett100/ci_cd_again.git
+        dest: /home/ubuntu/ci_cd_again
+        clone: yes
+        update: yes
+
+    - name: change directory to app
+      shell: cd /home/ubuntu/ci_cd_again/app
+
+    - name: install app dependencies
+      npm:
+        path: /home/ubuntu/ci_cd_again/app
+        state: present
+
+    - name: stop npm
+      command: killall -9 npm
+      ignore_errors: yes
+      become: yes
+
+    # command to run npm in the background
+    - name: Start the application in the background
+      ansible.builtin.shell: nohup npm start > /dev/null 2>&1 &
+      args:
+        chdir: /home/ubuntu/ci_cd_again/app

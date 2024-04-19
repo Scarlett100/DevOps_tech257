@@ -1,0 +1,58 @@
+# where do you want to install or run this playbook?
+- hosts: web
+ 
+  # would you like to see the logs?
+  gather_facts: yes
+ 
+  # provide admin access to this playbook - use sudo
+  become: true
+ 
+  # instructions - tasks install nodejs in agent node
+  tasks:
+    - name: install nodejs and npm on the agent node
+      apt: 
+        pkg: 
+          - nodejs
+          - npm
+ 
+    - name: clone repo
+      git: 
+        repo: https://github.com/Scarlett100/ci_cd_again.git
+        dest: /home/ubuntu/ci_cd_again
+        clone: yes
+        update: yes
+ 
+    - name: change directory to app
+      shell: cd /home/ubuntu/ci_cd_again/app
+ 
+    - name: install app dependencies
+      npm:
+        path: /home/ubuntu/ci_cd_again/app
+        state: present
+
+      git:
+        repo: https://github.com/Scarlett100/ci_cd_again.git
+        dest: /home/ubuntu/ci_cd_again
+        clone: yes
+        update: yes
+
+    - name: change directory to app
+      shell: cd /home/ubuntu/ci_cd_again/app
+ # command to install dependencies
+    - name: install app dependencies
+      npm:
+        path: /home/ubuntu/ci_cd_again/app
+        state: present
+ #stop npm
+    - name: stop npm
+        command: kill -all -9 npm
+        ignore_errors: true
+        become: yes
+
+    # command to run npm in the background
+    - name: Start the application in the background
+      ansible.builtin.shell: nohup npm start > /dev/null 2>&1 &
+      args:
+        chdir: /home/ubuntu/ci_cd_again/app
+                                                                 
+        
