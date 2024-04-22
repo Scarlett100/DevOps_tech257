@@ -4,7 +4,7 @@
 How I moved everything to one place:
 
 
-first on my local machine i went to each repo and did a 
+First on my local machine i went to each repo and did a 
 
 ```
 ls -a
