@@ -95,7 +95,12 @@ private subnet with db in it is like a bedroom that you don't want anyone to get
 
 we have only set up a route from the outside to the public.
 
-Whats there by default, thats there as private, why its private
+
+My custom configuration will look like this:
+
+![alt text](<images/AWS Cloud.png>)
+
+
 
 
 At its core and most basic a vpc can be understood as below as noted by: *AWS*.
