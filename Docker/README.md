@@ -1,5 +1,5 @@
 
-##  Docker
+##  <center> Docker <center/>
 
 - [What is docker](#what-is-docker)
   - [How to run an image](#how-to-run-an-image)
