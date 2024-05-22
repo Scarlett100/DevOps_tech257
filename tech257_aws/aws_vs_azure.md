@@ -14,13 +14,14 @@ By Default
 | Static VM IP by default (stay the same)                  | Dynamic VM IP by default (change with every stop/start, to make them static we can use "elastic IPs"). |
 
 
+<br>
 
 **Creating an Image:**
 
   - AZURE: when creating an image we need to deprovision the user first useing "waagent", rendering vm unusable, whereas, aws it can all be done on interface and can be reused.
   
 
-
+<br>
 
 
 **<center>Resource groups:</center>**
@@ -59,26 +60,26 @@ aws: Security group is linked to NIC, BUT FOR SUBNET YOU USE NACL (IF YOU WANT T
 - Azure:1 MIN AWS: 5MINS
 - azure: scalesets, aws: autoscaling groups.
 
-**autoscaling:**
+**Autoscaling:**
 - in **aws** autoscaling group: you need a launch template .
 launch templates: when we launch an image we need launch template for the config (eg. pem file,)
 
 
-**monitoring**
+**Monitoring**
 - Azure monitoring of Vms, 1 min is default.
 - AWS: have to turn on detailed monitoring to change default of 5 mins to 1 min.
 
 
- **storage**
- blob s3
- containers bucket
+ **Storage**
+ * Blob s3
+ * Containers bucket
 
 
- S3 -simple storage services
+ **S3 - Simple Storage Services**
 
- advantages:
+ Advantages:
  - Limitless
- - Security: prtivate by default 
+ - Security: Private by default 
  - Accessible: url/endpoint to access storage from anywhere
  - redundancy: built in from the start. multiple copies of things in case of a disaster.
  - 

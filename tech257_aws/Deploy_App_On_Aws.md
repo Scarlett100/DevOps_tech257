@@ -126,7 +126,8 @@ pm2 start app.js
 App is working:
 ![alt text](<images/Screenshot 2024-03-19 at 12.45.27.png>)
 
-app works on desktop
+App works on desktop:
+
 ![alt text](<images/Screenshot 2024-03-19 at 12.45.58.png>)
 
 Differences to how I did on azure:
@@ -196,6 +197,7 @@ pm2 start app.js
 ``` 
 
 # 2 tier deployment
+<br>
 Now we link the db and the app to create a 2 tier deployment!
 
 First we create a db vm:

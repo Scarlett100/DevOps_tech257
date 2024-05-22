@@ -12,7 +12,7 @@ First I had to setup the db and check nginx was running however, I had misread a
 
 However, had I got further I would have gone through the process of creating a launch template then the steps [here](https://github.com/Scarlett100/tech257_aws/blob/master/HA-SC_with_AWS.md) to create an asg as listed and used the db private ip. 
 
-my db script I had hoped to use:
+My db script I had hoped to use:
 
 ```
 #!/bin/bash
@@ -71,7 +71,7 @@ sudo systemctl status mongod
 ```
 
 
-if this doesn't work for me , then after speaking with colleagues I realised i may need to change the mongodb install version to latest in script:
+if this doesn't work for me , then after speaking with colleagues I realised I may need to change the mongodb install version to latest in script:
 
 ```
 # Install the latest version
@@ -86,9 +86,9 @@ echo "mongodb-org-tools hold" | sudo dpkg --set-selections
 ```
 
 
-test with sudo systemctl status mongod
+Test with sudo systemctl status mongod
 
-I did not get a chance to try the above and get it working but I believe chaging the mongo to latest on correct image would have worked.
+I did not get a chance to try the above and get it working but I believe changing the mongo to latest on correct image would have worked.
 
 Had I finished this my next task would have been to do the following:
 
