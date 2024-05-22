@@ -6,7 +6,7 @@
 An Amazon Machine Image (AMI) is a aws provided image with information required to launch an instance. This info includes *"Elastic Block Store (Amazon EBS) snapshots,  a template for the root volume of the instance (for example, an operating system, an application server, and applications), launch permissions that control which AWS accounts can use the AMI to launch instances and A block device mapping that specifies the volumes to attach to the instance when it's launched."*
 Multiple instances can be launched from a single AMI if you want the same config. You cannot create an instance without specifying an AMI.
 
-Below is the AMI Lifecycle according to aws:
+Below is the AMI Lifecycle according to AWS:
 
 ![alt text](<images/Screenshot 2024-04-09 at 11.46.36.png>)
 
@@ -100,10 +100,6 @@ pm2 start app.js --name "sparta-test-app"
 
 ```
 
-
-
-
-
 ## Create an AMI
 
 
@@ -122,23 +118,23 @@ To create an AMI, first you must have an instance with the app running on it.
 
 **4.** Click `create` in right hand corner
 
-**5** Once this is done navigate to `AMI` on the left hand side of the screen.
+**5.** Once this is done navigate to `AMI` on the left hand side of the screen.
 
-**6** Search for your ami, you will notice it will be pending for a little while (about 5 mins), eventually it will change to `running`
+**6.** Search for your ami, you will notice it will be pending for a little while (about 5 mins), eventually it will change to `running`
 ![alt text](<images/Screenshot 2024-04-09 at 10.39.12.png>)
 
 ##  Create a vm from AMI
 
-**1** On the AMI you will notice on the top there is a `Launch an Instance from AMI` button, click it.
+**1.** On the AMI you will notice on the top there is a `Launch an Instance from AMI` button, click it.
 
 
-**2** On instance creation page you will notice we have now got our ami preselected as seen below.
+**2.** On instance creation page you will notice we have now got our ami preselected as seen below.
 
 ![alt text](<images/Screenshot 2024-04-09 at 11.16.13.png>)
 
-**3** Follow it through, choosing all the normal choices `t2.micro, your app security group with port 80,22 and 3000 open for inbound`.
+**3.** Follow it through, choosing all the normal choices `t2.micro, your app security group with port 80,22 and 3000 open for inbound`.
 
-**4**
+**4.**
 in `Adavnced` in the `user data`,  I put the following:
 
 ```
@@ -154,9 +150,9 @@ pm2 start app.js --name "sparta-test-app"
 
 ```
 
-**5** click `launch`
+**5.** click `launch`
 
-**6** you can see that if you go to the ip address, the app is running.
+**6.** you can see that if you go to the ip address, the app is running.
 ![alt text](<images/Screenshot 2024-04-09 at 11.25.00.png>)
 
 
@@ -178,7 +174,7 @@ keep the snapshots window open
 ![alt text](<images/Screenshot 2024-04-09 at 10.48.03.png>)
 
 
-### delete snapshot
+### Delete snapshot
 
 **1.** navigate back to the snapshot page and delete the snapshot
 
