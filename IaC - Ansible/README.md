@@ -1,12 +1,12 @@
-# IAC
+# IaC - Infrastructure as Code *Ansible*
 
 ## What
 
-Infrastructure as code (IaC) allows you to  have the infrastructure using code as opposed to manually setting things up. Developers are constantly maintain, update and create infrastructure ti run tests, develop applications and then deploy them. IaC makes it wasy to tear the infrastructure down, or spin up quickly,
+Infrastructure as code (IaC) allows you to  have the infrastructure using code as opposed to manually setting things up. Developers are constantly maintain, update and create infrastructure ti run tests, develop applications and then deploy them. IaC makes it easy to tear the infrastructure down, or spin up quickly,
 
 ## Why 
 
-As DevOps Engineers we want to achieve automation. IaC helps us to do this by builiding environments. With Iac we can easily duplicate an environments infrastructure, once it has been built correctly, more importantly, we can do this quickly and easily with Iac, without having to combine manual work and scripts. Due to these quick start ups, we can also reduce config errors, and we can roll back to previous working environments. Lastly Iac allows  for continuos improvments, now that something works, we can easily apply something else tat will improve the process.
+As DevOps Engineers we want to achieve automation. IaC helps us to do this by building environments. With Iac we can easily duplicate an environments infrastructure, once it has been built correctly, more importantly, we can do this quickly and easily with Iac, without having to combine manual work and scripts. Due to these quick start ups, we can also reduce config errors, and we can roll back to previous working environments. Lastly Iac allows  for continuos improvements, now that something works, we can easily apply something else tat will improve the process.
 
 ## When do we use Iac:
 
@@ -28,10 +28,15 @@ In AWS we can use IAC with services such as:
 *   Puppet
 *   Chef
 
-## Benefits of ansible 
+  <br> 
+
+# Ansible
+
 Ansible is an open-source software provisioning, configuration management, and application-deployment tool.
 
-its benefits are:
+## Benefits of Ansible 
+
+The benefits of Ansible are:
 
 *   YAML is the chosen language to write playbooks, as it is easy to read and understand. This means you can get started in Ansible very quickly.
 *   Ansible is very powerful. We can spin up thousands of nodes at any time, one playbook can be run on many instance.. 
@@ -39,29 +44,33 @@ its benefits are:
 This is largely due to the fact that Ansible is agentless:
 
 Requirements are minimal for Ansible installation.
-Not Linux exclusive
-Ansible works with existing tool kits
-Uses high quality protocols (SSH and WinRM) to connect to hosts.
-
-
+* It is not Linux exclusive
+ <br>
+* Ansible works with existing tool kits
+* <br>
+* Uses high quality protocols (SSH and WinRM) to connect to hosts.
 
 ## Who is using ansible
 
 * DevOps Engineers
 
-
-playbook >AWScontrol machine(ec2)
+Ansible playbook deployment can be automated with Amazon EC2.
 
 
 ![alt text](images/ansible.drawio.png)
 
-To create our controller and agent nodes we must make 2 instances
+To create our controller and agent nodes we must make 2 instances:
 
-a controller and an app agent, both need port 22 open.
+* a controller 
+* an app agent
+<br> 
+  
+Both need port 22 open.
 
-once both are created ssh into the controller node:
+Once both are created ssh into the controller node:
 
-and run the following commands:
+Run the following commands:
+
 ``` 
 # update
 sudo apt update -y
@@ -87,7 +96,6 @@ ansible --version
 
 # Go to config file location
 cd /etc/ansible
-
 
 
 We need to use hosts file to make agent vm a
@@ -122,7 +130,7 @@ exit
 
 # Back to controller!
 
-We now open up a host file that is present but we cannot see.
+I now open up a host file that is present but we cannot see.
 
 ``` 
 cd /etc/ansible
@@ -133,29 +141,37 @@ Add 2  line below:
 [web]
 ec2-instance ansible_host=<AGENT_IP_ADDRESS> ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/<NAME_OF_PEM_FILE>.pem
 ``` 
-In this case ours would be:
+In this case mine would be:
 
 ``` 
 [web] <--this is the group I have called it
 ec2-instance ansible_host=34.245.85.94 ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/tech257.pem
 ``` 
 
-Now, if we run a:
+Now, if I run a:
 ``` 
 sudo ansible all -m ping
 ``` 
-Now we have to **verify our connection**: should get 
+Now we have to **verify our connection**: should get :
+<br>
+
 ![alt text](<images/ansible facts.png>)
 
-Then run
+Then run:
+<br>
+
 ``` 
 sudo ansible web -a "uname -a"
 ``` 
+<br>
 The output should be:
+<br>
+
 ![alt text](<images/Screenshot 2024-03-25 at 12.17.14.png>)
 
 
-To copy over our pem file to agent node,we run:
+To copy over our pem file to agent node, we run:
+<br>
 ```
 sudo ansible web -m ansible.builtin.copy -a "src=~/.ssh/tech257.pem dest=~/.ssh
 ```
@@ -166,40 +182,48 @@ sudo ansible web -m ansible.builtin.copy -a "src=~/.ssh/tech257.pem dest=~/.ssh
 
 ![alt text](<images/Screenshot 2024-03-25 at 15.30.10.png>)
 
-check nginx is infact running:
+Check nginx is in fact running:
+<br>
+
 ```
 sudo ansible web -a "systemctl status nginx"
 ```
 
 ![alt text](<images/Screenshot 2024-03-25 at 15.37.25.png>)
 
-npm start on agent app:
+Npm start on agent app:
 
 ![alt text](<Screenshot 2024-03-25 at 17.04.25.png>)
 
 
-app is working!
+The app is working!
+<br>
+
 ![alt text](<Screenshot 2024-03-25 at 17.27.50.png>)
 
-Currently running into issues when trying to stop npm process and start in background.
+Currently running into issues when trying to stop npm process and start in background. 
+
+<br>
+
 ![alt text](<Screenshot 2024-03-25 at 17.34.16.png>)
 
 
-to reconfigure 
+## To reconfigure 
 
-when ip changes, 
+When ip changes, 
 
-*   go to hosts change ip, give ip instance different name eg ec2 db, ec2 app
-*   make sure new instamce is in new group.
-*   to note db had public ip used.
-*   then run:
-*   
+*   Go to hosts change ip, give ip instance different name eg ec2 db, ec2 app
+*   Make sure new instamce is in new group.
+*   To note db had public ip used.
 
-
+<br>
 
 ![alt text](<images/Screenshot 2024-03-26 at 10.35.53.png>)
 
+<br>
 
+*   Then run:
+<br>
 ```
 sudo ansible all -m ping
 ```
@@ -209,36 +233,41 @@ As you can see all are working.
 
 # Getting db up and running, Mongodb through playbooks:
 
-
-
-first we had to make a yaml file in controller:
+First we had to make a yaml file in controller:
 
 ![alt text](<images/Screenshot 2024-03-26 at 10.29.14.png>)
 
+<br>
 
-then run:
+Then run:
+
+<br>
 
 ```
 sudo ansible-playbook mongo.yml
 ```
+<br>
 
-then I ran into errors. so from the Controller i had to run an update and upgrade on the db vm: 
+Then I ran into errors. so from the Controller I had to run an update and upgrade on the db vm: 
 
+<br>
 ```
 sudo ansible db -a "sudo apt-get update -y"
 sudo ansible db -a "sudo apt-get upgrade -y"
 ```
-
-Once that was sorted I ran the command again and 
+<br>
+Once that was sorted I ran the command again:
+<br>
 ```
 sudo ansible-playbook mongo.yml
 ```
+<br>
 
 It was successful!
 ![alt text](<images/Screenshot 2024-03-26 at 10.33.17.png>)
 
 Next I ran, to check mongo db was running on db vm:
-
+<br>
 
 ```
 sudo ansible db -a "systemctl status mongodb"
@@ -251,10 +280,12 @@ From controller ssh into db vm:
 * go to cd /etc
 * sudo nano mongodb.conf
 * change bind ip to all 0's and uncomment port
-* 
-* ![alt text](<images/Screenshot 2024-03-26 at 11.17.08.png>)
+ 
+ ![alt text](<images/Screenshot 2024-03-26 at 11.17.08.png>)
+<br>
 
-* to do in a mongo db script 
+
+To do in a mongo db script 
 add:
 
 
@@ -276,7 +307,7 @@ add:
 
 ```
 
-
+## Mondodb playbook
 Now here is the full mondodb playbook:
 
 ```
@@ -432,9 +463,12 @@ here is a final pasting of working files:
     ignore_errors: yes
 ```
 
+## Manual
 
-manually it is ok to run these 2 commands:
+Manually it is ok to run these 2 commands:
 
 node seeds/seed.js < ideall try and add to mongo playbook
 
+```
 Npm start <—do manually
+```
