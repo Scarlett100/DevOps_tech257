@@ -12,22 +12,22 @@
   - [How to view all containers:](#how-to-view-all-containers)
 - [Entering a container](#entering-a-container)
   - [To enter container:](#to-enter-container)
-  - [get machine name](#get-machine-name)
-  - [install dependencies](#install-dependencies)
-  - [how to get to nginx file:](#how-to-get-to-nginx-file)
-  - [install nano and edit html file](#install-nano-and-edit-html-file)
+  - [Get machine name](#get-machine-name)
+  - [Install dependencies](#install-dependencies)
+  - [How to get to nginx file:](#how-to-get-to-nginx-file)
+  - [Install nano and edit html file](#install-nano-and-edit-html-file)
   - [To exit container](#to-exit-container)
-  - [to create my own image:](#to-create-my-own-image)
-  - [find an image](#find-an-image)
+  - [To create my own image:](#to-create-my-own-image)
+  - [Find an image](#find-an-image)
   - [How to tag an image](#how-to-tag-an-image)
-  - [push image to docker hub to create repo](#push-image-to-docker-hub-to-create-repo)
-  - [run the image](#run-the-image)
-  - [it works!](#it-works)
-- [containerise northwind app](#containerise-northwind-app)
+  - [Push image to docker hub to create repo](#push-image-to-docker-hub-to-create-repo)
+  - [Run the image](#run-the-image)
+  - [Working](#working)
+- [Containerise northwind app](#containerise-northwind-app)
   - [Check the image is there:](#check-the-image-is-there)
-  - [working image](#working-image)
+  - [Working image](#working-image)
   - [Using docker on the sparta test app](#using-docker-on-the-sparta-test-app)
-- [references](#references)
+- [References](#references)
 
 
 
@@ -39,6 +39,8 @@
 
 
 Docker is an open source platform for creating, shipping, testing, deploying and running applications. With Docker it is possible to isolate applications from the infrastructure you have configured, this allows for software to be delivered rapidly. The speed of Docker means that the time spent between writing code and deploying an app to production is  decreased significantly. In Docker, infrastructure is managed the same way applications are. 
+
+Multiple containers running are called microservices, docker is faster than a vm.
 
 Below we can see the architecture:
 
@@ -119,12 +121,12 @@ docker exec -it d6fad36d83aa sh
 
 **Once inside**
 
-## get machine name 
+## Get machine name 
 ```
 uname -a
 ```
 
-## install dependencies
+## Install dependencies
 ```
 apt-get update -y
 apt-get upgrade -y
@@ -132,7 +134,7 @@ apt-get install sudo
 ```
 
 
-## how to get to nginx file:
+## How to get to nginx file:
 
 
 ```
@@ -159,7 +161,7 @@ sh: 8: cd: can't cd to /share
 ls
 cat index.html
 
-## install nano and edit html file
+## Install nano and edit html file
 
 sudo apt-get install nano
 sudo nano index.html
@@ -180,7 +182,7 @@ docker run -d -p 90:80 <container_id> image name
 docker run -d -p 80:80 nginx
 ```
 
-## to create my own image:
+## To create my own image:
 
 I need to create an image of the nginx container so that I have my own image, to do this I need to save changes on new image, using a commit command and the container id. I also made a few extra html text changes (not necessary,  just exploring)
 
@@ -188,7 +190,7 @@ I need to create an image of the nginx container so that I have my own image, to
 docker commit b57b620c3e12 
 ``` 
 
-## find an image
+## Find an image
 
 To find image as you have not added a tag it will be marked as `none` unless you tag it.
 
@@ -201,7 +203,7 @@ docker images -a
 ```
 docker tag 4930b8f9436a scarlett100/tech257morgan
 ```
-## push image to docker hub to create repo
+## Push image to docker hub to create repo
 ```
 docker push scarlett100/tech257morgan
 ```
@@ -211,19 +213,20 @@ docker push scarlett100/tech257morgan
 
 ![alt text](<images/Screenshot 2024-04-16 at 17.07.17.png>)
 
-## run the image
+## Run the image
 run (i put 250 as it was unlikely to be a port in use)
 
 ```
 docker run -d -p 250:80 scarlett100/tech257morgan
 ```
 
-## it works!
+## Working
+
 ![alt text](<images/Screenshot 2024-04-16 at 17.09.10.png>)
 
 
 
-# containerise northwind app
+# Containerise northwind app
 First I had to make a docker file which can be found here [dockerfile](https://github.com/Scarlett100/docker_1/blob/master/app_northwind/DOCKERFILE) and add the [requirements.txt](https://github.com/Scarlett100/docker_1/blob/master/app_northwind/requirements.txt) in order too 
 
 Structure wise, I placed them within the same place as the app python file  `northwind_web.py` sat. [northwind app](https://github.com/LSF970/northwind_python_app)
@@ -255,7 +258,7 @@ You will get this notification.
 ```
 # INFO:waitress:Serving on http://0.0.0.0:5000
 ```
-##  working image
+##  Working image
 
 You can see it works!
 
@@ -277,11 +280,6 @@ As you can see below it is now in my hub:
 
 ![alt text](<images/Screenshot 2024-04-18 at 09.19.24.png>)
 
-
-
-
-
-
 ## Using docker on the sparta test app
 
 Here is the link to my [dockerfile](https://github.com/Scarlett100/tech257-sparta-app/blob/master/app2/Dockerfile). 
@@ -292,12 +290,12 @@ I had to make sure the correct things were installed including:
 * node 20
 * npm
 
-**2.** next I ran:
+**2.** Next I ran:
 
 ```
 docker build --tag sparta_test_app . 
 ```
-**2.** once done I ran the container
+**2.** Once done I ran the container
 ```
 docker run -d -p 3000:3000 sparta_test_app 
 ```
@@ -307,7 +305,7 @@ but got an error saying the port wa allocated so i testes on 100:3000
 and was able to see the test app 
 
 
-**2.** next I commited my container
+**3.** Next I commited my container
 
 ```
  docker commit a07c8b85a159 scarlett100/sparta_test_app_no_p:sparta_test_app_no_p
@@ -318,29 +316,23 @@ and was able to see the test app
  ```
 
  As you can see it is in my hub
- **3.**
+ **4.**
 
 ```
 docker run -d -p 100:3000 sparta_test_ap
 ```
-
-
 Blocker:
+
+Things that were not straightforward although expected to be straightforward.
+
 
 * pm2
 * vscode
-* 
+  
 
 
-# references
+# References
 https://www.freecodecamp.org/news/how-to-dockerize-a-flask-app/
 
 
 
-multiple containers running are called microservices.
-
-size:
-docker is faster than a vm
-
-
-kubernetes
