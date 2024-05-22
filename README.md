@@ -5,13 +5,14 @@ In this folder you will find:
 * AWS
 * Docker
 * Ansible
+* Azure
+* Linux
 * 
 * Terraform
 * Jenkins
 * Python
 * Kubernetes
-* Azure
-* Linux
+
 
 There are a number of topics covered in this repo including:
 
