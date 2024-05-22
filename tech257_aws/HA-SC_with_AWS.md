@@ -30,7 +30,7 @@ Also with my diagram is 3 vm's in 3 different availability zones, AWS is balanci
 
 ## Create launch template
 
-We will launch a template based off an AMI I created previously. If you wish to see the AMI this was built on click here: [AMI documentation](https://github.com/Scarlett100/tech257_aws/blob/master/AMI.md) 
+We will launch a template based off an AMI I created previously. If you wish to see the AMI this was built on click here: [AMI documentation](https://github.com/Scarlett100/DevOps_tech257/blob/master/tech257_aws/APP_AMI.md) 
 
 **1.** `Application and OS Images (Amazon Machine Image) > my ami`
 
@@ -177,4 +177,4 @@ Please delete in this order to avoid errors.
 
 
 # Notes
-To view ami this was built on click here: [AMI documentation](https://github.com/Scarlett100/tech257_aws/blob/master/AMI.md) 
+To view ami this was built on click here: [AMI documentation](https://github.com/Scarlett100/DevOps_tech257/blob/master/tech257_aws/APP_AMI.md) 
