@@ -1,5 +1,5 @@
 
-##  <center> Docker <center/>
+##   Docker 
 
 - [What is docker](#what-is-docker)
   - [How to run an image](#how-to-run-an-image)
@@ -50,6 +50,8 @@ Below we can see the architecture:
 
 
 ## How to run an image 
+
+The image in the example below is called *hello world*
 ```
 docker run hello-world
 ```
