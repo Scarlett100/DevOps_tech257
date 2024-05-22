@@ -1,10 +1,12 @@
 # Monitoring and alert managment
 
+- [Monitoring and alert managment](#monitoring-and-alert-managment)
+  - [Get a cpu alert](#get-a-cpu-alert)
 
 In order to monitor instances, navigate to `monitoring` on the instance.
 
 
-**1** click on `manage detailed moitoring` so that you can enable detailed monitoring
+**1.** click on `manage detailed moitoring` so that you can enable detailed monitoring
 ![alt text](<images/Screenshot 2024-04-09 at 16.59.38.png>)
 
 **2.** Click `Enable`
@@ -14,8 +16,6 @@ In order to monitor instances, navigate to `monitoring` on the instance.
 
 ![alt text](<images/Screenshot 2024-04-09 at 16.59.38.png>)
 
-
-
 **4.** Lastly, save the dashboard in right hand corner.
 
 ![alt text](<images/Screenshot 2024-04-09 at 12.28.18.png>)
@@ -23,13 +23,13 @@ In order to monitor instances, navigate to `monitoring` on the instance.
 
 
 
-Get a cpu alert
+## Get a cpu alert
 
-first get a vm running with app instance, heres documentation on that if needed
-[app vm](https://github.com/Scarlett100/tech257_aws/blob/master/APP_AMI.md)
+First get a vm running with app instance, here is documentation on that if needed
+[app vm](https://github.com/Scarlett100/DevOps_tech257/blob/master/tech257_aws/APP_AMI.md)
 
 
-next I went to cloudwatch and created an alarm, 
+Next I went to cloudwatch and created an alarm, 
 in browse :
 
  ![alt text](<Screenshot 2024-04-16 at 10.31.09.png>)
