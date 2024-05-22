@@ -2,12 +2,13 @@
 This is a repository for all things Sparta Global DevOps.
 
 In this folder you will find:
-* Docker
-* Terraform
 * AWS
+* Docker
+* Ansible
+* 
+* Terraform
 * Jenkins
 * Python
-* Ansible
 * Kubernetes
 * Azure
 * Linux
