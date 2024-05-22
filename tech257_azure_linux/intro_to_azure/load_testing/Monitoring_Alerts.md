@@ -1,13 +1,13 @@
 # Azure Monitor monitoring, alert management 
 
 
-# What is worst to best in terms of What is worst to best in terms of monitoring and responding to load/traffic.
+## What is worst to best in terms of What is worst to best in terms of monitoring and responding to load/traffic.
 
 * A dashboard is also a way in which we can have in terms of monitoring and responding to load/traffic, however  its possible we may have missed it.
 * An alarm and notification would be the next best way
 * The best way to monitor and respond to load/traffic is through autoscaling.
 
-# How you setup a dashboard
+## setup a dashboard
 
 To set up a dashboard in Azure, you will need to follow the below steps.
 
@@ -29,7 +29,7 @@ To load test we installed Apache Bench.
 sudo apt-get install apache2-utils
  ```
 
-# Apache Bench load Requests
+## Apache Bench load Requests
 My dashboard stopped giving a response at this point, my requests were timing out: <br>
 Now to increase to 10,000 requests and increase speed to 200:
  ```
@@ -41,10 +41,10 @@ as you can see via my dash board below:
 ![alt text](<Screenshot 2024-03-14 at 14.34.00.png>)
 
 
-# Create a CPU usage alert for your app instance 
+## Create a CPU usage alert for your app instance 
 
 
-step one: alert rule
+**step one: alert rule**
 <br>
 ![alt text](<Screenshot 2024-03-14 at 14.39.08.png>)
 
@@ -62,12 +62,12 @@ Our alert has been made as seen below:
 Lastly, as you can see below I have recieved my alert email:
 ![alt text](<Screenshot 2024-03-14 at 14.53.38.png>)
 
-# note
+## Note
 I did create another one to show useage over 1%
 as seen below:
 
 ![alt text](<Screenshot 2024-03-14 at 15.01.02.png>)
 
-here is my alert when it hit 1% :
+Here is my alert when it hit 1% :
 
 ![alt text](<Screenshot 2024-03-14 at 15.10.47.png>)

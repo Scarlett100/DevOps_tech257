@@ -1,10 +1,11 @@
 # DEPLOYING APP
 
 
-# SSH INTO VM
+### SSH INTO VM
 
 
-# PLAN SCRIPT.
+### PLAN SCRIPT
+
 
 
 TWO STEPS: <br>
