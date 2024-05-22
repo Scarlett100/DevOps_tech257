@@ -80,7 +80,7 @@ connect port 80 of my client to port 80 of my image. p is for ports d is for det
 ![alt text](<images/Screenshot 2024-04-16 at 15.49.01.png>)
 
 ## To start an aleady existing stopped container
-note: to start, we will be back where we left off anything previously on a container will be there.
+Note: to start, we will be back where we left off anything previously on a container will be there.
 
 `docker start` <container_id>
 
@@ -91,7 +91,7 @@ note: to start, we will be back where we left off anything previously on a conta
 docker rm <container_id> -f
 ```
 
-**note**: safer to stop it then remove:
+**Note**: Safer to stop it then remove:
 
 ```
 `docker stop` <container_id>
