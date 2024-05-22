@@ -116,6 +116,8 @@ At its core and most basic a vpc can be understood as below as noted by: *AWS*.
 
 As we want to use our own vpc to ensure better security, we must first make one. Much like a house, you work outside - in, getting the foundations correct before everything else.
 
+![alt text](<Screenshot 2024-05-22 at 11.38.57.png>)
+
 
 
 Here is the complete configuration we want:
