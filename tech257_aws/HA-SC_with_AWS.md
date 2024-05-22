@@ -41,11 +41,11 @@ We will launch a template based off an AMI I created previously. If you wish to 
 
 **4.** Do **not** specify the subnet becausewe do not want everything in the same subnet, we will configure this in the ASG when we give a subnet to each AZ to ensure high availabilty. In launch templates we cannot do this. Your subnet determines your AZ.
 
-**4.** Add user data.
+**5.** Add user data.
 
-**5.** do not add tags at this point.
+**6.** do not add tags at this point.
 
-add user data as below:
+Add user data as below:
 ```
 #!/bin/bash
  
@@ -58,11 +58,6 @@ pm2 stop all
 pm2 start app.js --name "sparta-test-app"
 
 ````
-
-
-
-
-
 ## Test launch template works: Launch an instance
 
 To test the launch template works we will create a vm from the instance.
@@ -77,7 +72,7 @@ you will notice everything you previously set is there
 ![alt text](<images/Screenshot 2024-04-09 at 14.56.26.png>)
 
 
-*3* Click `launch` & you will eventually can see instance has been created:
+*3.* Click `launch` & you will eventually can see instance has been created:
 ![alt text](<images/Screenshot 2024-04-09 at 14.58.36.png>)
 
 
@@ -154,10 +149,9 @@ we can also see our target group is healthy:
 ![alt text](<images/Screenshot 2024-04-09 at 16.43.48.png>)
 
 **4.** When I delete an instance:
-another one initialises
+Another one initialises
 
 ![alt text](<images/Screenshot 2024-04-09 at 15.35.55.png>)
-
 
 
 
