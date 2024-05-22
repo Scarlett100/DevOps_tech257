@@ -21,7 +21,7 @@
 
 ### VPC
 
-In Amazon Virtual Private Cloud (Amazon VPC), AWS resources are launched in your own isolated virtual network within the cloud, similar to a traditional network within an on premise data center. AWS gives you a default VPC however, utilising this shared infrastructure on a public cloud may compromise your security and may not be what you need, therefore, you also have the option to make your own vpc. We can think of a VPC like an apartment within a hugh apartment building which represents AWS cloud, it is your private space with furniture inside. A shared apartment, would be considered as the default VPC whilst the 3 rooms within it would be the default subnets linked to different availabilty zones. A seperate apartment has seperate security. A Custom VPCs will isolate your resources from the outside vpcs and the internet (public) and in turn provide a more secure environment and network. We ultimately determine traffic flow and define security groups.
+In Amazon Virtual Private Cloud (Amazon VPC), AWS resources are launched in your own isolated virtual network within the cloud, similar to a traditional network within an on premise data center. AWS gives you a default VPC however, utilising this shared infrastructure on a public cloud may compromise your security and may not be what you need, therefore, you also have the option to make your own vpc. We can think of a VPC like an apartment within a hugh apartment building which represents AWS cloud, it is your private space with furniture inside. A shared apartment, would be considered as the default VPC whilst the 3 rooms within it would be the default subnets linked to different availability zones. A separate apartment has separate security. A Custom VPCs will isolate your resources from the outside vpcs and the internet (public) and in turn provide a more secure environment and network. We ultimately determine traffic flow and define security groups.
 
 
 
@@ -36,15 +36,14 @@ This previously mentioned furniture includes
 The benefits of a vpc are:
 * Scalability
 * Isolation
-* High Availabilty
+* High Availability
 
 
-To note, when we create a vm, we specify a vpc, so its important to create your vpc first if you dont want to work with the default given. 
+To note, when we create a vm, we specify a vpc, so its important to create your vpc first if you don't want to work with the default given. 
 
 
 # why do I want to create a VPC
 ## Using a vpc to increase security in a 2 tier deployment.
-
 
 
 My VPC will isolate my resources and therefore, increase security for my two-tier deployment.
@@ -53,7 +52,7 @@ My VPC will isolate my resources and therefore, increase security for my two-tie
 A default VPC is a public VPC, designed to make it easy to get going with AWS services such as an EC2. It has an internet gateway and public subnets with a corresponding route table. So, it's useful you only need publicly accessible resources or new to aws. 
 
 <br>
-However, I need to keep parts of my network private, my database should not be publically accessible. So, I will create my own to get the setup I need, its more complicated than using the default, but its more secure.
+However, I need to keep parts of my network private, my database should not be publicly accessible. So, I will create my own to get the setup I need, its more complicated than using the default, but its more secure.
 
 
 During the creation of my own VPC I shall:
@@ -69,8 +68,7 @@ I will have to work hard to make the VPC to make our resources public because it
 
 eg. the default route table that will be connected to our private subnet  will be for traffic internal to our network, 
 
-If you use the default vpc everything is publically acessible. However, the moment you create your own vpc everything is private already, until you put all the pieces in place. And connect those those pieces to make something public.
-
+If you use the default vpc everything is publicly accessible. However, the moment you create your own vpc everything is private already, until you put all the pieces in place. And connect those those pieces to make something public.
 
 Up until now, I've been doing the deployment of my app and database in the default already provided virtual network which is called a Virtual Private Cloud or VPC in aws. 
 
@@ -89,27 +87,21 @@ So what I needed was an entryway, I needed a way to get into my VPC. So I needed
 I needed something to have the routing rules. A rule that stated how does the traffic/people get from the gateway door/entrypoint on the outside of my vpc to my app, which is public. This is what a Route table is for. It will contain that rule of how to get to the doorway all the way to the public subnet (public room). Only place the traffic can go, from the door to the public room(living room?) as stated in the rule.
 
 
-public subnet: 
+Public subnet: This is where the app will sit.
 
-private subnet with db in it is like a bedroom that you don't want anyone to get too, there is no route through the vpc to get from the outside of the vpc  to the private subnet. thats how it stays private.
+Private subnet with db in it is like a bedroom that you don't want anyone to get too, there is no route through the vpc to get from the outside of the vpc  to the private subnet. thats how it stays private.
 
-we have only set up a route from the outside to the public.
+We have only set up a route from the outside to the public.
 
 
 My custom configuration will look like this:
 
 ![alt text](<images/AWS Cloud.png>)
 
-
-
-
 At its core and most basic a vpc can be understood as below as noted by: *AWS*.
 <br>
 
 ![alt text](<images/Screenshot 2024-04-11 at 15.41.26.png>)
-
-
-
 
 
 ### 1. Create a vpc
@@ -123,8 +115,6 @@ As we want to use our own vpc to ensure better security, we must first make one.
 Here is the complete configuration we want:
 
 ![alt text](images/vpc_we_set_up.png)
-
-
 
 
 **1.1** In the console search `vpc` then click `create vpc`.
@@ -151,7 +141,7 @@ Here is the complete configuration we want:
 ### 2. Create subnet
 
 Subnets are a range of IP addresses within your VPC. Like a network within a network or a tiny room within your vpc. When using aws resources are created in specific subnets, eg. a database EC2 may be created in a private subnet to avoid inbound internet access.
-High availibity, previously mentoned as a benefit of VPC'S can be achieved through subnets by putting each subnet into different availibilty zones and therefore deploying resources in different AZ's to avoid downtime if a single az is down. Subnets cannot be spread across AZ's and must therefore be placed in **one** AZ.
+High availability, previously mentioned as a benefit of VPC'S can be achieved through subnets by putting each subnet into different availability zones and therefore deploying resources in different AZ's to avoid downtime if a single az is down. Subnets cannot be spread across AZ's and must therefore be placed in **one** AZ.
 
 
 **2.1** Navigate to `subnets` on the left hand pane or put it in the interface search bar.
@@ -310,7 +300,7 @@ note: for details on how I created this ami [click here for APP AMI documentatio
 
 
 
- **10.3** Within the user data put the folowing:
+ **10.3** Within the user data put the following:
 
  To note we added npm install to ensure seeding, but when tested without it, it also worked.
 
@@ -337,7 +327,7 @@ It works!
 ### 11. Delete
 
 * ms
-* sg
+* Security Group
 * vpc (deletes subnet,rt,etc)
 
 
