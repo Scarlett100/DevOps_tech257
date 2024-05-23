@@ -7,12 +7,7 @@
 Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.
 
 It groups containers that make up an application into logical units for easy management and discovery. Kubernetes builds upon 15 years of experience of running production workloads at Google, combined with best-of-breed ideas and practices from the community.
-To use kubernetes we must be able to have  docker installed
-
-
-
-
-
+To use kubernetes we must be able to have  docker installed.
 
 microservices vs monolith.
 
@@ -20,27 +15,27 @@ microservices vs monolith.
 
 
 
-we build seperate images for the app and the database, so therefore, multiple microservices and use kubernetes to orchestrate this and make it highly avalable, scalable and durable. K8's has self healing, it can heal itself. 
+We build separate images for the app and the database, so therefore, multiple microservices and use kubernetes to orchestrate this and make it highly available, scalable and durable. K8's has self healing, it can heal itself. 
 
-you need to look at the business needs to decide which is better for you.
+Each business must look at the business needs to decide which is better for you.
 
-
-
-kubernetres can do these things
+Kubernetes can do these things
 
 * self healing
 * load balancing and service discovery
 
 
-once on docker hub want to scale self heal etc but docker cannot do this( so you use docker compose, swarm, kubernetes etc)
+Once on docker hub want to scale self heal etc but docker cannot do this( so you use docker compose, swarm, kubernetes etc)
 
-we want to use docker 
+3 certainties:
 
-we want to create a deployment
+* I want to use docker 
 
-**1we need to create a label so easily found
+* I want to create a deployment
 
-creating pods:
+* I need to create a label so easily found
+
+Creating pods:
 
 ```
 apiVersion: apps/v1
@@ -90,15 +85,16 @@ when one is deleted
  # Nginx 
 
 the files can be found here 
-[nginx-deploy](https://github.com/Scarlett100/kubernetes_/blob/master/nginx-deploy.yml)
-[nginx-service](https://github.com/Scarlett100/kubernetes_/blob/master/nginx-service.yml)
+[nginx-deploy](https://github.com/Scarlett100/DevOps_tech257/blob/master/kubernetes/nginx-deploy.yml)
+[nginx-service](https://github.com/Scarlett100/DevOps_tech257/blob/master/kubernetes/nginx-service.yml)
 
  # sparta app deployment
 
  The files can be found here 
-[Sparta-app-deploy](https://github.com/Scarlett100/kubernetes_/blob/master/node_app/app-deploy.yml)
+[Sparta-app-deploy](https://github.com/Scarlett100/DevOps_tech257/blob/master/kubernetes/node_app/app-deploy.yml)
 <br>
-[Sparta-service](https://github.com/Scarlett100/kubernetes_/blob/master/node_app/app-service.yml)
+
+[Sparta-app-service](https://github.com/Scarlett100/DevOps_tech257/blob/master/kubernetes/node_app/app-service.yml)
 
 I created the service then the deploy and ran these commands
 
@@ -126,12 +122,14 @@ get the ip of service
 now you can update the deploy (or start) and add ip en var to the bottom.
 
  The files can be found here:
-[db-service](https://github.com/Scarlett100/kubernetes_/blob/master/node_app/db-service.yml)
+[db-service](https://github.com/Scarlett100/DevOps_tech257/blob/master/kubernetes/node_app/db-service.yml)
+
 <br>
-[db-deploy](https://github.com/Scarlett100/kubernetes_/blob/master/node_app/db-deploy.yml)
+
+[db-deploy](https://github.com/Scarlett100/DevOps_tech257/blob/master/kubernetes/node_app/db-deploy.yml)
 
 
-to seed the db:
+To seed the db:
 
 ```
 kubectl exec -it <pod name> -- node seeds/seed.js
@@ -142,7 +140,7 @@ However, I am having mac issues and my db just keeps timing out so I could not s
 
 
 
-# kubernetes autoscaling
+# Kubernetes autoscaling
 
 ```
 apiVersion: autoscaling/v1
