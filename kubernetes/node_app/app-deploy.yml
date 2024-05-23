@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sparta-app-deploy  # naming the deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sparta-app
+  template:
+    metadata:
+      labels:
+        app: sparta-app
+    spec:
+      containers:
+      - name: sparta-app
+        image: scarlett100/sparta_test_app_no_p:sparta_test_app_no_p
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DB_HOSTS
+          value: "mongodb://10.110.173.2 :27017/posts"

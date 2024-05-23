@@ -1,0 +1,21 @@
+# select type of API version and type of service/object
+apiVersion: v1
+kind: Service
+
+# metadata for name
+metadata: 
+  name: sparta-db-svc
+  namespace: default
+
+# specification to include port selector to connect to the deployment.
+spec:
+  ports:
+  - port: 27017
+    targetPort: 27017
+    protocol: TCP  # specify the protocol, TCP is default
+
+  # selector
+  selector:
+    app: sparta-db
+
+  type: NodePort  # always use load balancer for local ip cluster

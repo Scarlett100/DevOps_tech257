@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sparta-db-deploy  # naming the deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sparta-db
+  template:
+    metadata:
+      labels:
+        app: sparta-db
+    spec:
+      containers:
+      - name: sparta-db
+        image: mongo:latest
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: mongodb-data
+          mountPath: /data/db
+      volumes:
+      - name: mongodb-data
+        emptyDir: {}
