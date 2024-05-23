@@ -12,12 +12,13 @@ In this folder you will find:
 * Python
 * Kubernetes
 
-
+Python can be found here: [Python](https://github.com/Scarlett100/tech257_python)
+<br>
 Jenkins you can find here:
 [Jenkins CI/CD](https://github.com/Scarlett100/jenkins_own_server/blob/master/images2/README.md)
 
 
-
+# How
 How I moved everything to one place:
 
 
