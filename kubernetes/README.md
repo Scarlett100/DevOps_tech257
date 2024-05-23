@@ -75,9 +75,11 @@ kubectl get pods
 ![alt text](<images/Screenshot 2024-04-18 at 14.32.32.png>)
 
 
-delete
+## Delete
 
+```
 kubectl delete pod `id`
+```
 
 automantically managed
 when one is deleted
@@ -173,7 +175,7 @@ Once done, delete the services you no longer need it (ie the deployments previou
 
 ```
 kubectl delete svc <name of service>
-
+```
 
 So now we will execute the file that creates a volume that needs to use a mongo deployment that will will then be exposed by the  mongo service that will then be scalable. Once you deploy the file using `kubectl create -f <name of file> you will see the below.
 

@@ -7,14 +7,14 @@ In this folder you will find:
 * Ansible
 * Azure
 * Linux
-* 
 * Terraform
 * Jenkins
 * Python
 * Kubernetes
 
 
-There are a number of topics covered in this repo including:
+Jenkins you can find here:
+[Jenkins CI/CD](https://github.com/Scarlett100/jenkins_own_server/blob/master/images2/README.md)
 
 
 
